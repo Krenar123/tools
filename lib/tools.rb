@@ -9,7 +9,14 @@ module Tools
       @arr = []
       @sum = 0
     end
+    def valid?
+      # If included alphabetic char and all symbols its not valid
+      return false if  @str.length <=1 || !@str.scan(/[:alpha:]/).empty? || !@str.scan(/[!$&#-]/).empty?  ||  @str.include?(':') || (@str.length == 2 && @str[0] == ' ' && @str[1] == '0')
+      return false if char_to_i(@str) == false
+      true
+    end
 
+    private
     def char_to_i(str)
       # We go for every char and convert into integer and add it to array
       str.delete(' ').each_char do |char|
@@ -34,14 +41,7 @@ module Tools
       return @sum%10 == 0 ? true : false
     end
 
-    def valid?
-
-      # If included alphabetic char and all symbols its not valid
-      return false if  @str.length <=1 || !@str.scan(/[:alpha:]/).empty? || !@str.scan(/[!$&#-]/).empty?  ||  @str.include?(':') || (@str.length == 2 && @str[0] == ' ' && @str[1] == '0')
-      return false if char_to_i(@str) == false
-      true
-      
-    end
+    
   end
 end
 
