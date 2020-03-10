@@ -12,10 +12,8 @@ module Tools
 
     def char_to_i(str)
       # We go for every char and convert into integer and add it to array
-      str.each_char do |char|
-        if char != ' '
-          @arr << char.to_i
-        end
+      str.delete(' ').each_char do |char|
+        @arr << char.to_i
       end
       do_math(@arr)
     end
@@ -23,17 +21,17 @@ module Tools
     def do_math(mt)
       # We do reverse so we can double every second number from the end
       mt = mt.reverse
-      for i in 0..mt.length-1 do
-        if i.odd?
-          # If i is 1,3,5.. we are going to double it and then ask if its greater than 9
-          mt[i] += mt[i]
+
+      mt.each_with_index do |value, index|
+        if index.odd?
+          mt[index] += mt[index]
           # If its greater than 9 then substract it with 9. Else leave it
-          mt[i] = mt[i] > 9 ? mt[i] - 9 : mt[i]
+          mt[index] = mt[index] > 9 ? mt[index] - 9 : mt[index]
         end
       end
       mt.each { |el| @sum += el }
       # Return true if sum is divisible with 10 else return false
-      return @sum = @sum%10 == 0 ? true : false
+      return @sum%10 == 0 ? true : false
     end
 
     def valid?
