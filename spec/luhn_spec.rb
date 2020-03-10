@@ -63,5 +63,8 @@ RSpec.describe Tools::Luhn do
         test = Tools::Luhn.new('8273 1232 7352 0569')
         expect(test.valid?).to be false
     end
-
+    it 'should give us true if there are more 0 ex:0000 0'do
+        test = Tools::Luhn.new('0000 0')
+        expect(test.valid?).to be true
+    end
 end
