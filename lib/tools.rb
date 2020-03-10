@@ -39,23 +39,10 @@ module Tools
     def valid?
 
       # If included alphabetic char and all symbols its not valid
-      if  @str.length <=1 || !@str.scan(/[:alpha:]/).empty? || !@str.scan(/[!$&#-]/).empty?  ||  @str.include?(':') || (@str.length == 2 && @str[0] == ' ' && @str[1] == '0')
-        false
-      # For canadian sin that are 9 digits in this case with two spaces 11 length
-      elsif @str.length == 11
-        if char_to_i(@str) == true
-          true
-        else
-          false
-        end
-      # For credit cards number
-      else
-        if char_to_i(@str) == true
-          true
-        else
-          false
-        end
-      end
+      return false if  @str.length <=1 || !@str.scan(/[:alpha:]/).empty? || !@str.scan(/[!$&#-]/).empty?  ||  @str.include?(':') || (@str.length == 2 && @str[0] == ' ' && @str[1] == '0')
+      return false if char_to_i(@str) == false
+      true
+      
     end
   end
 end
