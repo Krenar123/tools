@@ -40,8 +40,33 @@ module Tools
       # Return true if sum is divisible with 10 else return false
       return @sum%10 == 0 ? true : false
     end
+  end
 
-    
+  # Another class from the same library
+  class Raindrop
+    attr_reader :num
+
+    def initialize(num)
+      @num = num
+    end
+
+    def se_if_factors
+      str = ''
+
+      arr = (1..@num).select { |n| @num%n == 0}
+      
+      str += 'Pling' if arr.include?(3)
+      str += 'Plang' if arr.include?(5)
+      str += 'Plong' if arr.include?(7)
+      # If str is empty then str = num.to_s else return plingPlang ...
+      str = str=='' ? @num.to_s : str
+      return str
+    end
+
+    def output
+      se_if_factors
+    end
+
   end
 end
 
