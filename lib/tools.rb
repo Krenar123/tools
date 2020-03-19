@@ -10,8 +10,9 @@ module Tools
       @sum = 0
     end
     def valid?
+      @str.delete!(' ')
       # If included alphabetic char and all symbols its not valid
-      return false if  @str.length <=1 || !@str.scan(/[:alpha:]/).empty? || !@str.scan(/[!$&#-]/).empty?  ||  @str.include?(':') || (@str.length == 2 && @str[0] == ' ' && @str[1] == '0')
+      return false if  @str.length <=1 || !@str.scan(/[:alpha:]/).empty? || !@str.scan(/[!$&#-]/).empty?  ||  @str.include?(':') 
       return false if char_to_i(@str) == false
       true
     end
