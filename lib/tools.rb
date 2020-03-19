@@ -59,8 +59,7 @@ module Tools
       str += 'Plang' if arr.include?(5)
       str += 'Plong' if arr.include?(7)
       # If str is empty then str = num.to_s else return plingPlang ...
-      str = str=='' ? @num.to_s : str
-      return str
+      str=='' ? @num.to_s : str
     end
 
     def output
