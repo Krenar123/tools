@@ -1,4 +1,5 @@
 require "tools/version"
+require "tools/word_count"
 
 module Tools
 
