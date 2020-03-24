@@ -13,7 +13,7 @@ module Tools
     def valid?
       @str.delete!(' ')
       # If included alphabetic char and all symbols its not valid
-      return false if  @str.length <=1 || !@str.scan(/[:alpha:]/).empty? || !@str.scan(/[!$&#-]/).empty?  ||  @str.include?(':') 
+      return false if  @str.length <=1 || !@str.scan(/[:alpha:]/).empty? || !@str.scan(/[:punct:]/).empty? 
       return false if char_to_i(@str) == false
       true
     end
@@ -21,7 +21,7 @@ module Tools
     private
     def char_to_i(str)
       # We go for every char and convert into integer and add it to array
-      @arr = str.delete(' ').each_char.map { |char| char.to_i }
+      @arr = str.each_char.map(&:to_i)
       do_math(@arr)
     end
 
