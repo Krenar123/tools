@@ -11,8 +11,7 @@ module Tools
     def valid?
       # If included alphabetic char and all symbols its not valid
       return false if  @str.length <=1 || !@str.scan(/[:alpha:]/).empty? || !@str.scan(/[:punct:]/).empty? 
-      return false if char_to_i(@str) == false
-      true
+      char_to_i(@str)
     end
 
     private
