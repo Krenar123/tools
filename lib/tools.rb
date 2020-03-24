@@ -21,9 +21,7 @@ module Tools
     private
     def char_to_i(str)
       # We go for every char and convert into integer and add it to array
-      str.delete(' ').each_char do |char|
-        @arr << char.to_i
-      end
+      @arr = str.delete(' ').each_char.map { |char| char.to_i }
       do_math(@arr)
     end
 
