@@ -30,6 +30,7 @@ Now, given just that score of 34, your program should be able to say:
 =end
 module Tools
     class Allergies
+        LIMIT = 256
         PROD = {
             'eggs'=>1,
             'peanuts'=>2,
@@ -41,21 +42,22 @@ module Tools
             'cats'=>128
         }
         def initialize(sc)
-            @score = sc
+            @score = sc >= LIMIT ? sc_change(sc) : sc 
         end
 
+        def sc_change(sc)
+            sc -= LIMIT while sc >= LIMIT
+            sc
+        end
         def allergic_to?(allergen)
             is_allergic(allergen)
         end
 
         def allergy_test
-            @score > PROD.values.sum ? PROD.keys[0] : get_allergies
+            do_math.compact
         end
 
         private
-        def get_allergies
-            do_math.compact
-        end
 
         def is_allergic(allergen) 
             do_math.include?(allergen)

@@ -25,11 +25,16 @@ RSpec.describe Tools::Allergies do
 
     it 'should give all allergies for score=255' do
         tom = Tools::Allergies.new(255)
-        expect(tom.allergy_test).to eq(all)
+        expect(tom.allergy_test).to match_array(all)
     end
 
     it 'should give eggs for score=256' do
-        tom = Tools::Allergies.new(256)
-        expect(tom.allergy_test).to eq('eggs')
+      tom = Tools::Allergies.new(256)
+      expect(tom.allergy_test).to eq([])
+    end
+
+    it 'should give eggs for score=257' do
+        tom = Tools::Allergies.new(257)
+        expect(tom.allergy_test).to eq(['eggs'])
     end
   end
