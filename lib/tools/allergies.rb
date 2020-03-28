@@ -48,28 +48,27 @@ module Tools
             is_allergic(allergen)
         end
 
+        def allergy_test
+            @score > PROD.values.sum ? PROD.keys[0] : get_allergies
+        end
+
+        private
+        def get_allergies
+            do_math.compact
+        end
+
         def is_allergic(allergen) 
+            do_math.include?(allergen)
+        end
+        
+        def do_math
             sc = @score
             PROD.to_a.reverse.to_h.map do |key,value|  
                 if sc >= value
                     sc -= value
                     key
                 end
-            end.include?(allergen)
-        end
-
-
-        def allergy_test
-            @score > PROD.values.sum ? PROD.keys[0] : get_allergies
-        end
-
-        def get_allergies
-            PROD.to_a.reverse.to_h.map do |key,value|  
-                if @score >= value
-                    @score -= value
-                    key
-                end
-            end.compact
+            end
         end
     end
 end
