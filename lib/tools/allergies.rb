@@ -63,12 +63,7 @@ module Tools
         
         def do_math
             sc = @score
-            PROD.to_a.reverse.to_h.map do |key,value|  
-                if sc >= value
-                    sc -= value
-                    key
-                end
-            end
+            PROD.to_a.reverse.to_h.select {|key,value| sc >= value && sc -= value}.keys
         end
     end
 end
