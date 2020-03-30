@@ -1,6 +1,7 @@
 require "tools/version"
 require "tools/word_count"
 require "tools/allergies"
+require "tools/resistors"
 
 module Tools
 
