@@ -54,12 +54,7 @@ module Tools
                 tolerance: 20
             }
         }
-       
-        def putss(colors)
-            a,b,c,d = colors
-            d == nil ? DEFTOLERANCE : d
-        end
-        
+
         def self.color_coded(colors=nil)
             colors==nil ? colors : colors.map{|i| COLORS[i][:value] if COLORS.include?(i)}.take(2).join().to_i
         end
@@ -72,11 +67,11 @@ module Tools
 
         def self.get_multiplier
             arr = []
-            color_coded(arr<<@f_color<<@s_color) * (10 ** COLORS[@multiplier][:value])
+            color_coded(arr<<@f_color<<@s_color) * (10 ** COLORS[@multiplier][:value]).to_f
         end
 
         def self.get_tolerance
-            @tolerance = :default if @tolerance == nil
+            @tolerance = DEFTOLERANCE if @tolerance == nil
             COLORS[@tolerance][:tolerance]
         end
     end
