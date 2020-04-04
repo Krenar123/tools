@@ -1,10 +1,13 @@
 module Tools 
     class WordCount
-        def initialize(str)
-            @str = str
+        def initialize(sentence)
+            @words = sentence.downcase.scan(/\b[\w']+\b/)
         end
-        def count
-            @str.downcase.scan(/\w+/).each_with_object(Hash.new(0)) { |key,hash| hash[key] += 1}
+    
+        def word_count
+            count = Hash.new(0)
+            @words.map{|i| count[i]+=1}
+            count
         end
-    end
+    end    
 end

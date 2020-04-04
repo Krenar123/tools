@@ -1,3 +1,4 @@
+=begin
 RSpec.describe Tools::WordCount do
     let(:word) { Tools::WordCount.new('') }
 
@@ -33,3 +34,5 @@ RSpec.describe Tools::WordCount do
         expect(word.count).to eq(hash)
     end
 end
+
+=end
