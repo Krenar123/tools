@@ -1,7 +1,6 @@
 module Tools
     class Chocolate 
         class << self
-
             def fairness?(first_p = nil, second_p = nil)
                 check_for_nil(first_p, second_p)
             end
