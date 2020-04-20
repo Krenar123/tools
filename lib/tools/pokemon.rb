@@ -31,9 +31,7 @@ module Tools
 
         def fix_the_format
             @seconds -= 60 while @seconds >= 60 && @minutes += 1
-            puts @minutes
             @minutes -= 60 while @minutes >= 60 && @hour += 1
-            puts @minutes
             @hour -= 24 while @hour >= 24 
             string_format
         end
