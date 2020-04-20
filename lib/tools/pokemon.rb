@@ -29,6 +29,8 @@ module Tools
             fix_the_format
         end
 
+        private
+        
         def fix_the_format
             @seconds -= 60 while @seconds >= 60 && @minutes += 1
             @minutes -= 60 while @minutes >= 60 && @hour += 1
